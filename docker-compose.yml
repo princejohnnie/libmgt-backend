@@ -11,6 +11,8 @@ services:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
       POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - './create-tables.sql:/docker-entrypoint-initdb.d/10-create-tables.sql'
     networks:
       - libmgt
     healthcheck:

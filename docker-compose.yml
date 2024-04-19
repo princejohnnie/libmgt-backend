@@ -1,0 +1,50 @@
+version: '1'
+
+services:
+  pgsql:
+    image: 'postgres:15'
+    ports:
+      - '${FORWARD_DB_PORT:-5432}:5432'
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: '${DB_DATABASE}'
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    networks:
+      - libmgt
+    healthcheck:
+      test:
+          - CMD
+          - pg_isready
+          - '-q'
+          - '-d'
+          - '${DB_DATABASE}'
+          - '-U'
+          - '${DB_USERNAME}'
+      interval: 5s
+      retries: 5
+      timeout: 5s
+
+  libmgt-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: libmgt-backend
+    ports:
+      - '8081:8080'
+    networks:
+      - libmgt
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    environment:
+      DB_HOST: pgsql
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+networks:
+  libmgt:
+    driver: bridge

@@ -1,5 +1,6 @@
 package com.johnny.libmgtbackend.controller;
 
+import com.johnny.libmgtbackend.dtos.LibrarianDto;
 import com.johnny.libmgtbackend.models.BorrowRecord;
 import com.johnny.libmgtbackend.models.Librarian;
 import com.johnny.libmgtbackend.repository.BookRepository;
@@ -7,11 +8,15 @@ import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -25,24 +30,30 @@ public class LibrarianController {
     @Autowired
     private BorrowRepository borrowRepository;
 
+    @Autowired
+    private PagedResourcesAssembler<LibrarianDto> pagedResourcesAssembler;
+
 
     @GetMapping("/librarians")
-    List<Librarian> index() {
-        return librarianRepository.findAll();
+    PagedModel<EntityModel<LibrarianDto>> index(
+            @PageableDefault(page = 0, size = Integer.MAX_VALUE, sort = {"email"}) Pageable paging) {
+        Page<Librarian> result = librarianRepository.findAll(paging);
+
+        return pagedResourcesAssembler.toModel(result.map(LibrarianDto::new));
     }
 
     @GetMapping("/librarians/{id}")
-    Librarian show(@PathVariable Long id) {
-        return librarianRepository.findById(id).get();
+    LibrarianDto show(@PathVariable Long id) {
+        return new LibrarianDto(librarianRepository.findById(id).get());
     }
 
     @PostMapping("/librarians")
-    Librarian store(@RequestBody Librarian librarian) {
-        return librarianRepository.save(librarian);
+    LibrarianDto store(@RequestBody Librarian librarian) {
+        return new LibrarianDto(librarianRepository.save(librarian));
     }
 
     @PutMapping("/librarians/{id}")
-    Librarian update(@RequestBody Librarian newLibrarian, @PathVariable Long id) {
+    LibrarianDto update(@RequestBody Librarian newLibrarian, @PathVariable Long id) {
         var user = librarianRepository.findById(id).get();
 
         if (!user.getEmail().equals(newLibrarian.getEmail())) {
@@ -55,7 +66,7 @@ public class LibrarianController {
             user.setPassword(newLibrarian.getPassword());
         }
 
-        return librarianRepository.save(user);
+        return new LibrarianDto(librarianRepository.save(user));
     }
 
     @DeleteMapping("/librarians/{id}")

@@ -64,10 +64,9 @@ public class LibrarianControllerTests {
         mockMvc.perform(
                         get("/api/librarians")
                 ).andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].email", is("johnny@gmail.com")))
-                .andExpect(jsonPath("$[0].name", is("John Uzodinma")))
-                .andExpect(jsonPath("$[0].password", is("password")));
+                .andExpect(jsonPath("$._embedded.items", hasSize(1)))
+                .andExpect(jsonPath("$._embedded.items[0].email", is("johnny@gmail.com")))
+                .andExpect(jsonPath("$._embedded.items[0].name", is("John Uzodinma")));
     }
 
     @Test
@@ -78,8 +77,7 @@ public class LibrarianControllerTests {
                         get("/api/librarians/{id}", librarian.getId())
                 ).andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", is("johnny@gmail.com")))
-                .andExpect(jsonPath("$.name", is("John Uzodinma")))
-                .andExpect(jsonPath("$.password", is("password")));
+                .andExpect(jsonPath("$.name", is("John Uzodinma")));
     }
 
     @Test

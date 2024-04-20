@@ -48,10 +48,10 @@ public class BookControllerTests {
         mockMvc.perform(
                 get("/api/books")
         ).andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].title", is("Purple Hibiscus")))
-                .andExpect(jsonPath("$[0].author", is("Chimamanda Adichie")))
-                .andExpect(jsonPath("$[0].isbn", is("1288-2828-2228")));
+                .andExpect(jsonPath("$._embedded.items", hasSize(1)))
+                .andExpect(jsonPath("$._embedded.items[0].title", is("Purple Hibiscus")))
+                .andExpect(jsonPath("$._embedded.items[0].author", is("Chimamanda Adichie")))
+                .andExpect(jsonPath("$._embedded.items[0].isbn", is("1288-2828-2228")));
     }
 
     @Test

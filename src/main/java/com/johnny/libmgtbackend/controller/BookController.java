@@ -1,11 +1,16 @@
 package com.johnny.libmgtbackend.controller;
 
+import com.johnny.libmgtbackend.dtos.BookDto;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -14,23 +19,30 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private PagedResourcesAssembler<BookDto> pagedResourcesAssembler;
+
     @GetMapping("/books")
-    List<Book> index() {
-        return bookRepository.findAll();
+    PagedModel<EntityModel<BookDto>> index(
+            @PageableDefault(page = 0, size = Integer.MAX_VALUE, sort = {"publicationYear"}) Pageable paging) {
+
+        Page<Book> result = bookRepository.findAll(paging);
+
+        return pagedResourcesAssembler.toModel(result.map(BookDto::new));
     }
 
     @GetMapping("/books/{id}")
-    Book show(@PathVariable Long id) {
-        return bookRepository.findById(id).get();
+    BookDto show(@PathVariable Long id) {
+        return new BookDto(bookRepository.findById(id).get());
     }
 
     @PostMapping("/books")
-    Book store(@RequestBody Book book) {
-        return bookRepository.save(book);
+    BookDto store(@RequestBody Book book) {
+        return new BookDto(bookRepository.save(book));
     }
 
     @PutMapping("/books/{id}")
-    Book update(@RequestBody Book newBook, @PathVariable Long id) {
+    BookDto update(@RequestBody Book newBook, @PathVariable Long id) {
         var book = bookRepository.findById(id).get();
 
         if (!book.getTitle().equals(newBook.getTitle())) {
@@ -46,7 +58,7 @@ public class BookController {
             book.setPublicationYear(newBook.getPublicationYear());
         }
 
-        return bookRepository.save(book);
+        return new BookDto(bookRepository.save(book));
     }
 
     @DeleteMapping("/books/{id}")

@@ -48,9 +48,9 @@ public class PatronControllerTests {
         mockMvc.perform(
                         get("/api/patrons")
                 ).andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is("John Uzodinma")))
-                .andExpect(jsonPath("$[0].contact", is("+234809382832")));
+                .andExpect(jsonPath("$._embedded.items", hasSize(1)))
+                .andExpect(jsonPath("$._embedded.items[0].name", is("John Uzodinma")))
+                .andExpect(jsonPath("$._embedded.items[0].contact", is("+234809382832")));
     }
 
     @Test

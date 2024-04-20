@@ -32,4 +32,11 @@ public class Book {
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<BorrowRecord> borrowRecords;
+
+    public Book(String title, String author, String isbn, String publicationYear) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.publicationYear = publicationYear;
+    }
 }

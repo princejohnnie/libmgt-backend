@@ -6,6 +6,5 @@ import com.johnny.libmgtbackend.models.Patron;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BorrowRepository extends JpaRepository<BorrowRecord, Long> {
-
-    BorrowRecord findBorrowRecordByBookAndPatron(Book book, Patron patron);
+    BorrowRecord findBorrowRecordByBookAndPatronAndReturnDateNull(Book book, Patron patron);
 }

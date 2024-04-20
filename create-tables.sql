@@ -31,8 +31,8 @@ CREATE TABLE borrow_records (
     id serial not null primary key,
     book_id integer not null references books (id),
     patron_id integer not null references patrons (id),
-    borrow_date timestamp not null default now(),
-    return_date timestamp null default null
+    borrow_date date null default current_date,
+    return_date date null default null
 );
 
 COMMIT;

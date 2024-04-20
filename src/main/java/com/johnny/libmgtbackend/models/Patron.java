@@ -32,4 +32,8 @@ public class Patron {
     @JsonIgnore
     private List<BorrowRecord> borrowRecords;
 
+    public Patron(String name, String contact) {
+        this.name = name;
+        this.contact = contact;
+    }
 }

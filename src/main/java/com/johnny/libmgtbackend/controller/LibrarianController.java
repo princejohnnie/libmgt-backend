@@ -2,7 +2,6 @@ package com.johnny.libmgtbackend.controller;
 
 import com.johnny.libmgtbackend.models.BorrowRecord;
 import com.johnny.libmgtbackend.models.Librarian;
-import com.johnny.libmgtbackend.models.Patron;
 import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
@@ -10,6 +9,7 @@ import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,6 +45,9 @@ public class LibrarianController {
     Librarian update(@RequestBody Librarian newLibrarian, @PathVariable Long id) {
         var user = librarianRepository.findById(id).get();
 
+        if (!user.getEmail().equals(newLibrarian.getEmail())) {
+            user.setEmail(newLibrarian.getEmail());
+        }
         if (!user.getName().equals(newLibrarian.getName())) {
             user.setName(newLibrarian.getName());
         }
@@ -65,9 +68,14 @@ public class LibrarianController {
         var patron = patronRepository.findById(patronId).get();
         var book = bookRepository.findById(bookId).get();
 
-        var borrowRecord = new BorrowRecord(book, patron);
+        var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatronAndReturnDateNull(book, patron);
+        if (borrowRecord == null) {
+            var newRecord = new BorrowRecord(book, patron);
+            newRecord.setBorrowDate(LocalDate.now());
 
-        return borrowRepository.save(borrowRecord);
+            return borrowRepository.save(newRecord);
+        }
+        return null;
 
     }
 
@@ -76,9 +84,9 @@ public class LibrarianController {
         var patron = patronRepository.findById(patronId).get();
         var book = bookRepository.findById(bookId).get();
 
-        var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatron(book, patron);
+        var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatronAndReturnDateNull(book, patron);
         if (borrowRecord != null) {
-            borrowRecord.setReturnDate(LocalDateTime.now());
+            borrowRecord.setReturnDate(LocalDate.now());
             return borrowRepository.save(borrowRecord);
         }
         return null;

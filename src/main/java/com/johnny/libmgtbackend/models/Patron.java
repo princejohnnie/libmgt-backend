@@ -1,5 +1,6 @@
 package com.johnny.libmgtbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,11 +28,8 @@ public class Patron {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @ManyToMany
-    @JoinTable(
-            name = "borrow_records",
-            joinColumns = @JoinColumn(name = "patron_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
-    )
-    private List<Book> books = new ArrayList<>();
+    @OneToMany(mappedBy = "patron", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<BorrowRecord> borrowRecords;
+
 }

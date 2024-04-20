@@ -3,6 +3,8 @@ package com.johnny.libmgtbackend.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.repository.BookRepository;
+import com.johnny.libmgtbackend.request.AddBookRequest;
+import com.johnny.libmgtbackend.request.UpdateBookRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +71,9 @@ public class BookControllerTests {
 
     @Test
     public void givenBook_whenPostBook_thenStoreBook() throws Exception {
-        var book = new Book("Purple Hibiscus", "Chimamanda Adichie", "1288-2828-2228", "2016");
+        var request = new AddBookRequest("Purple Hibiscus", "Chimamanda Adichie", "1288-2828-2228", "2016");
 
-        var payload = objectMapper.writeValueAsString(book);
+        var payload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
                 post("/api/books")
@@ -86,7 +88,7 @@ public class BookControllerTests {
     public void givenBook_whenPutBook_thenUpdateBook() throws Exception {
         var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
 
-        var updateBook = new Book("Game of Thrones updated", "John Walker", "1233-3423-4545", "2018");
+        var updateBook = new UpdateBookRequest("Game of Thrones updated", "John Walker", "1233-3423-4545", "2018");
 
         var updatePayload = objectMapper.writeValueAsString(updateBook);
 

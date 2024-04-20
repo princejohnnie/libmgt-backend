@@ -8,7 +8,10 @@ import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
+import com.johnny.libmgtbackend.request.CreateLibrarianRequest;
+import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import com.johnny.libmgtbackend.service.LibrarianService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,13 +43,13 @@ public class LibrarianController {
     }
 
     @PostMapping("/librarians")
-    LibrarianDto store(@RequestBody Librarian librarian) {
-        return librarianService.createLibrarian(librarian);
+    LibrarianDto store(@RequestBody @Valid CreateLibrarianRequest request) {
+        return librarianService.createLibrarian(request);
     }
 
     @PutMapping("/librarians/{id}")
-    LibrarianDto update(@RequestBody Librarian newLibrarian, @PathVariable Long id) {
-        return librarianService.updateLibrarian(newLibrarian, id);
+    LibrarianDto update(@RequestBody @Valid UpdateLibrarianRequest request, @PathVariable Long id) {
+        return librarianService.updateLibrarian(request, id);
     }
 
     @DeleteMapping("/librarians/{id}")

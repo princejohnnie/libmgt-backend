@@ -3,6 +3,8 @@ package com.johnny.libmgtbackend.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.johnny.libmgtbackend.models.Patron;
 import com.johnny.libmgtbackend.repository.PatronRepository;
+import com.johnny.libmgtbackend.request.CreatePatronRequest;
+import com.johnny.libmgtbackend.request.UpdatePatronRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,9 +68,9 @@ public class PatronControllerTests {
 
     @Test
     public void givenPatron_whenPostPatron_thenStorePatron() throws Exception {
-        var patron = new Patron("John Uzodinma", "+234809382832");
+        var request = new CreatePatronRequest("John Uzodinma", "+234809382832");
 
-        var payload = objectMapper.writeValueAsString(patron);
+        var payload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
                 post("/api/patrons")
@@ -83,9 +85,9 @@ public class PatronControllerTests {
     public void givenPatron_whenPutBook_thenUpdatePatron() throws Exception {
         var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
 
-        var newPatron = new Patron("John Uzodinma updated", "+234809382123");
+        var request = new UpdatePatronRequest("John Uzodinma updated", "+234809382123");
 
-        var updatePayload = objectMapper.writeValueAsString(newPatron);
+        var updatePayload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
                         put("/api/patrons/{id}", patron.getId())

@@ -18,12 +18,6 @@ CREATE TABLE patrons (
     updated_at timestamp null default now()
 );
 
-CREATE TABLE borrow_records (
-    patron_id integer not null references patrons (id),
-    book_id integer not null references books (id)
-);
-CREATE INDEX borrow_records_index on borrow_records (patron_id, book_id);
-
 CREATE TABLE librarians (
     id serial not null primary key,
     email varchar(100) not null,
@@ -31,6 +25,14 @@ CREATE TABLE librarians (
     password varchar(255) not null,
     created_at timestamp not null default now(),
     updated_at timestamp null default now()
+);
+
+CREATE TABLE borrow_records (
+    id serial not null primary key,
+    book_id integer not null references books (id),
+    patron_id integer not null references patrons (id),
+    borrow_date timestamp not null default now(),
+    return_date timestamp null default null
 );
 
 COMMIT;

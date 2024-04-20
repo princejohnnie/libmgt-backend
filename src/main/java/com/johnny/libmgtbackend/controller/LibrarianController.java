@@ -1,13 +1,16 @@
 package com.johnny.libmgtbackend.controller;
 
+import com.johnny.libmgtbackend.models.BorrowRecord;
 import com.johnny.libmgtbackend.models.Librarian;
 import com.johnny.libmgtbackend.models.Patron;
 import com.johnny.libmgtbackend.repository.BookRepository;
+import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,8 @@ public class LibrarianController {
     private PatronRepository patronRepository;
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private BorrowRepository borrowRepository;
 
 
     @GetMapping("/librarians")
@@ -56,25 +61,26 @@ public class LibrarianController {
     }
 
     @PostMapping("/borrow/{bookId}/patron/{patronId}")
-    Patron borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+    BorrowRecord borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
         var patron = patronRepository.findById(patronId).get();
         var book = bookRepository.findById(bookId).get();
 
-        patron.getBooks().add(book);
+        var borrowRecord = new BorrowRecord(book, patron);
 
-        return patronRepository.save(patron);
+        return borrowRepository.save(borrowRecord);
 
     }
 
     @PutMapping("/return/{bookId}/patron/{patronId}")
-    Patron returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+    BorrowRecord returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
         var patron = patronRepository.findById(patronId).get();
         var book = bookRepository.findById(bookId).get();
 
-        if (!patron.getBooks().isEmpty()) {
-            patron.getBooks().remove(book);
+        var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatron(book, patron);
+        if (borrowRecord != null) {
+            borrowRecord.setReturnDate(LocalDateTime.now());
+            return borrowRepository.save(borrowRecord);
         }
-
-        return patronRepository.save(patron);
+        return null;
     }
 }

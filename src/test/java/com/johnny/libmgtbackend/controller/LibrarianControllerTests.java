@@ -9,6 +9,8 @@ import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
+import com.johnny.libmgtbackend.request.CreateLibrarianRequest;
+import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,9 +84,9 @@ public class LibrarianControllerTests {
 
     @Test
     public void givenLibrarian_whenPostLibrarian_thenStoreLibrarian() throws Exception {
-        var librarian = new Librarian("johnny@gmail.com", "John Uzodinma", "password");
+        var request = new CreateLibrarianRequest("johnny@gmail.com", "John Uzodinma", "password");
 
-        var payload = objectMapper.writeValueAsString(librarian);
+        var payload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
                 post("/api/librarians")
@@ -99,9 +101,9 @@ public class LibrarianControllerTests {
     public void givenLibrarian_whenPutLibrarian_thenUpdateLibrarian() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
 
-        var newLibrarian = new Librarian("johnny123@gmail.com", "John Prince", "password");
+        var request = new UpdateLibrarianRequest("johnny123@gmail.com", "John Prince", "password");
 
-        var updatePayload = objectMapper.writeValueAsString(newLibrarian);
+        var updatePayload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
                         put("/api/librarians/{id}", librarian.getId())

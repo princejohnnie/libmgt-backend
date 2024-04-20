@@ -1,8 +1,11 @@
 package com.johnny.libmgtbackend.service;
 
 import com.johnny.libmgtbackend.dtos.BookDto;
+import com.johnny.libmgtbackend.exception.ModelNotFoundException;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.repository.BookRepository;
+import com.johnny.libmgtbackend.request.AddBookRequest;
+import com.johnny.libmgtbackend.request.UpdateBookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,27 +29,29 @@ public class BookService {
     }
 
     public BookDto getBook(Long id) {
-        return new BookDto(bookRepository.findById(id).get());
+        var book = bookRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Book.class, id));
+        return new BookDto(book);
     }
 
-    public BookDto addBook(Book book) {
+    public BookDto addBook(AddBookRequest request) {
+        var book = new Book(request.title, request.author, request.isbn, request.publicationYear);
         return new BookDto(bookRepository.save(book));
     }
 
-    public BookDto updateBook(Book newBook, Long id) {
-        var book = bookRepository.findById(id).get();
+    public BookDto updateBook(UpdateBookRequest request, Long id) {
+        var book = bookRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Book.class, id));
 
-        if (!book.getTitle().equals(newBook.getTitle())) {
-            book.setTitle(newBook.getTitle());
+        if (request.title != null && !book.getTitle().equals(request.title)) {
+            book.setTitle(request.title);
         }
-        if (!book.getAuthor().equals(newBook.getAuthor())) {
-            book.setAuthor(newBook.getAuthor());
+        if (request.author != null && !book.getAuthor().equals(request.author)) {
+            book.setAuthor(request.author);
         }
-        if (!book.getIsbn().equals(newBook.getIsbn())) {
-            book.setIsbn(newBook.getIsbn());
+        if (request.isbn != null && !book.getIsbn().equals(request.isbn)) {
+            book.setIsbn(request.isbn);
         }
-        if (!book.getPublicationYear().equals(newBook.getPublicationYear())) {
-            book.setPublicationYear(newBook.getPublicationYear());
+        if (request.publicationYear != null && !book.getPublicationYear().equals(request.publicationYear)) {
+            book.setPublicationYear(request.publicationYear);
         }
 
         return new BookDto(bookRepository.save(book));

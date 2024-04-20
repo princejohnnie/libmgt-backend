@@ -2,12 +2,17 @@ package com.johnny.libmgtbackend.service;
 
 import com.johnny.libmgtbackend.dtos.BorrowRecordDto;
 import com.johnny.libmgtbackend.dtos.LibrarianDto;
+import com.johnny.libmgtbackend.exception.ModelNotFoundException;
+import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.models.BorrowRecord;
 import com.johnny.libmgtbackend.models.Librarian;
+import com.johnny.libmgtbackend.models.Patron;
 import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
+import com.johnny.libmgtbackend.request.CreateLibrarianRequest;
+import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,24 +45,25 @@ public class LibrarianService {
     }
 
     public LibrarianDto getLibrarian(Long id) {
-        return new LibrarianDto(librarianRepository.findById(id).get());
+        return new LibrarianDto(librarianRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Librarian.class, id)));
     }
 
-    public LibrarianDto createLibrarian(Librarian librarian) {
+    public LibrarianDto createLibrarian(CreateLibrarianRequest request) {
+        var librarian = new Librarian(request.email, request.name, request.password);
         return new LibrarianDto(librarianRepository.save(librarian));
     }
 
-    public LibrarianDto updateLibrarian(Librarian newLibrarian, Long id) {
-        var user = librarianRepository.findById(id).get();
+    public LibrarianDto updateLibrarian(UpdateLibrarianRequest request, Long id) {
+        var user = librarianRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Librarian.class, id));
 
-        if (!user.getEmail().equals(newLibrarian.getEmail())) {
-            user.setEmail(newLibrarian.getEmail());
+        if (request.email != null && !user.getEmail().equals(request.email)) {
+            user.setEmail(request.email);
         }
-        if (!user.getName().equals(newLibrarian.getName())) {
-            user.setName(newLibrarian.getName());
+        if (request.name != null && !user.getName().equals(request.name)) {
+            user.setName(request.name);
         }
-        if (!user.getPassword().equals(newLibrarian.getPassword())) {
-            user.setPassword(newLibrarian.getPassword());
+        if (request.password != null && !user.getPassword().equals(request.password)) {
+            user.setPassword(request.password);
         }
 
         return new LibrarianDto(librarianRepository.save(user));
@@ -68,8 +74,8 @@ public class LibrarianService {
     }
 
     public BorrowRecordDto borrowBook(Long bookId, Long patronId) {
-        var patron = patronRepository.findById(patronId).get();
-        var book = bookRepository.findById(bookId).get();
+        var book = bookRepository.findById(bookId).orElseThrow(() -> new ModelNotFoundException(Book.class, bookId));
+        var patron = patronRepository.findById(patronId).orElseThrow(() -> new ModelNotFoundException(Patron.class, patronId));
 
         var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatronAndReturnDateNull(book, patron);
         if (borrowRecord == null) {
@@ -82,8 +88,8 @@ public class LibrarianService {
     }
 
     public BorrowRecordDto returnBook(Long bookId, Long patronId) {
-        var patron = patronRepository.findById(patronId).get();
-        var book = bookRepository.findById(bookId).get();
+        var book = bookRepository.findById(bookId).orElseThrow(() -> new ModelNotFoundException(Book.class, bookId));
+        var patron = patronRepository.findById(patronId).orElseThrow(() -> new ModelNotFoundException(Patron.class, patronId));
 
         var borrowRecord = borrowRepository.findBorrowRecordByBookAndPatronAndReturnDateNull(book, patron);
         if (borrowRecord != null) {

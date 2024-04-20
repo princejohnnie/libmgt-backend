@@ -1,14 +1,13 @@
 package com.johnny.libmgtbackend.controller;
 
 import com.johnny.libmgtbackend.dtos.PatronDto;
-import com.johnny.libmgtbackend.models.Patron;
-import com.johnny.libmgtbackend.repository.PatronRepository;
+import com.johnny.libmgtbackend.request.CreatePatronRequest;
+import com.johnny.libmgtbackend.request.UpdatePatronRequest;
 import com.johnny.libmgtbackend.service.PatronService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.*;
@@ -32,13 +31,13 @@ public class PatronController {
     }
 
     @PostMapping("/patrons")
-    PatronDto store(@RequestBody Patron patron) {
-        return patronService.createPatron(patron);
+    PatronDto store(@RequestBody @Valid CreatePatronRequest request) {
+        return patronService.createPatron(request);
     }
 
     @PutMapping("/patrons/{id}")
-    PatronDto update(@RequestBody Patron newPatron, @PathVariable Long id) {
-        return patronService.updatePatron(newPatron, id);
+    PatronDto update(@RequestBody @Valid UpdatePatronRequest request, @PathVariable Long id) {
+        return patronService.updatePatron(request, id);
     }
 
     @DeleteMapping("/patrons/{id}")

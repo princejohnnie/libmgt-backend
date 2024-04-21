@@ -14,6 +14,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PatronService {
@@ -43,6 +44,7 @@ public class PatronService {
         return new PatronDto(patronRepository.save(patron));
     }
 
+    @Transactional
     public PatronDto updatePatron(UpdatePatronRequest request, Long id) throws Exception {
         var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
 

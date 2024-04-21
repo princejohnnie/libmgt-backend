@@ -21,6 +21,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -52,6 +53,7 @@ public class LibrarianService {
         return new LibrarianDto(librarianRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Librarian.class, id)));
     }
 
+    @Transactional
     public LibrarianDto updateLibrarian(UpdateLibrarianRequest request, Long id) throws Exception {
         var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
         var librarian = librarianRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Librarian.class, id));
@@ -82,6 +84,7 @@ public class LibrarianService {
         librarianRepository.deleteById(id);
     }
 
+    @Transactional
     public BorrowRecordDto borrowBook(Long bookId, Long patronId) throws Exception {
         var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
 
@@ -99,6 +102,7 @@ public class LibrarianService {
         throw new UnauthorizedException("You cannot borrow the same book twice");
     }
 
+    @Transactional
     public BorrowRecordDto returnBook(Long bookId, Long patronId) throws Exception {
         var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
 

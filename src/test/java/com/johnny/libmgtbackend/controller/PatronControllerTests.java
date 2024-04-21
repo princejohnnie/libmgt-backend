@@ -1,16 +1,22 @@
 package com.johnny.libmgtbackend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.johnny.libmgtbackend.auth.AuthenticationProvider;
+import com.johnny.libmgtbackend.models.Librarian;
 import com.johnny.libmgtbackend.models.Patron;
+import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.request.CreatePatronRequest;
 import com.johnny.libmgtbackend.request.UpdatePatronRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,6 +41,15 @@ public class PatronControllerTests {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private LibrarianRepository librarianRepository;
+
+    @MockBean
+    private AuthenticationProvider authenticationProvider;
+
+    @MockBean
+    private SecurityFilterChain securityFilterChain;
 
 
     @Test
@@ -68,8 +83,10 @@ public class PatronControllerTests {
 
     @Test
     public void givenPatron_whenPostPatron_thenStorePatron() throws Exception {
-        var request = new CreatePatronRequest("John Uzodinma", "+234809382832");
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var request = new CreatePatronRequest("John Uzodinma", "+234809382832");
         var payload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
@@ -83,8 +100,10 @@ public class PatronControllerTests {
 
     @Test
     public void givenPatron_whenPutBook_thenUpdatePatron() throws Exception {
-        var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
         var request = new UpdatePatronRequest("John Uzodinma updated", "+234809382123");
 
         var updatePayload = objectMapper.writeValueAsString(request);
@@ -103,8 +122,10 @@ public class PatronControllerTests {
 
     @Test
     public void givenPatron_whenDeletePatron_thenDeletePatron() throws Exception {
-        var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
         Assertions.assertEquals(1, patronRepository.count(), "Confirm that Patron was saved to the DB");
 
         mockMvc.perform(

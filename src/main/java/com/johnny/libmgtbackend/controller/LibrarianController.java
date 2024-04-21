@@ -1,27 +1,18 @@
 package com.johnny.libmgtbackend.controller;
 
-import com.johnny.libmgtbackend.dtos.BorrowRecordDto;
+import com.johnny.libmgtbackend.dtos.ErrorDto;
 import com.johnny.libmgtbackend.dtos.LibrarianDto;
-import com.johnny.libmgtbackend.models.BorrowRecord;
-import com.johnny.libmgtbackend.models.Librarian;
-import com.johnny.libmgtbackend.repository.BookRepository;
-import com.johnny.libmgtbackend.repository.BorrowRepository;
-import com.johnny.libmgtbackend.repository.PatronRepository;
-import com.johnny.libmgtbackend.repository.LibrarianRepository;
-import com.johnny.libmgtbackend.request.CreateLibrarianRequest;
 import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import com.johnny.libmgtbackend.service.LibrarianService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api")
@@ -42,29 +33,44 @@ public class LibrarianController {
         return librarianService.getLibrarian(id);
     }
 
-    @PostMapping("/librarians")
-    LibrarianDto store(@RequestBody @Valid CreateLibrarianRequest request) {
-        return librarianService.createLibrarian(request);
-    }
-
     @PutMapping("/librarians/{id}")
-    LibrarianDto update(@RequestBody @Valid UpdateLibrarianRequest request, @PathVariable Long id) {
-        return librarianService.updateLibrarian(request, id);
+    ResponseEntity<Object> update(@RequestBody @Valid UpdateLibrarianRequest request, @PathVariable Long id) {
+        try {
+            var librarianDto = librarianService.updateLibrarian(request, id);
+            return new ResponseEntity<>(librarianDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @DeleteMapping("/librarians/{id}")
-    void delete(@PathVariable Long id) {
-        librarianService.deleteLibrarian(id);
+    ResponseEntity<Void> delete(@PathVariable Long id) {
+        try {
+            librarianService.deleteLibrarian(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PostMapping("/borrow/{bookId}/patron/{patronId}")
-    BorrowRecordDto borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
-        return librarianService.borrowBook(bookId, patronId);
+    ResponseEntity<Object> borrowBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+        try {
+            var borrowRecordDto = librarianService.borrowBook(bookId, patronId);
+            return new ResponseEntity<>(borrowRecordDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
 
     }
 
     @PutMapping("/return/{bookId}/patron/{patronId}")
-    BorrowRecordDto returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
-        return librarianService.returnBook(bookId, patronId);
+    ResponseEntity<Object> returnBook(@PathVariable Long bookId, @PathVariable Long patronId) {
+        try {
+            var borrowRecordDto = librarianService.returnBook(bookId, patronId);
+            return new ResponseEntity<>(borrowRecordDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 }

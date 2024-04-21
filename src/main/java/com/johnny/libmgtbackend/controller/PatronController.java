@@ -1,5 +1,6 @@
 package com.johnny.libmgtbackend.controller;
 
+import com.johnny.libmgtbackend.dtos.ErrorDto;
 import com.johnny.libmgtbackend.dtos.PatronDto;
 import com.johnny.libmgtbackend.request.CreatePatronRequest;
 import com.johnny.libmgtbackend.request.UpdatePatronRequest;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,17 +34,32 @@ public class PatronController {
     }
 
     @PostMapping("/patrons")
-    PatronDto store(@RequestBody @Valid CreatePatronRequest request) {
-        return patronService.createPatron(request);
+    ResponseEntity<Object> store(@RequestBody @Valid CreatePatronRequest request) {
+        try {
+            var patronDto = patronService.createPatron(request);
+            return new ResponseEntity<>(patronDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PutMapping("/patrons/{id}")
-    PatronDto update(@RequestBody @Valid UpdatePatronRequest request, @PathVariable Long id) {
-        return patronService.updatePatron(request, id);
+    ResponseEntity<Object> update(@RequestBody @Valid UpdatePatronRequest request, @PathVariable Long id) {
+        try {
+            var patronDto = patronService.updatePatron(request, id);
+            return new ResponseEntity<>(patronDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @DeleteMapping("/patrons/{id}")
-    void delete(@PathVariable Long id) {
-        patronService.deletePatron(id);
+    ResponseEntity<Void> delete(@PathVariable Long id) {
+        try {
+            patronService.deletePatron(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

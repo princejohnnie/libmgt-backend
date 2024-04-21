@@ -1,7 +1,9 @@
 package com.johnny.libmgtbackend.service;
 
+import com.johnny.libmgtbackend.auth.AuthenticationProvider;
 import com.johnny.libmgtbackend.dtos.BookDto;
 import com.johnny.libmgtbackend.exception.ModelNotFoundException;
+import com.johnny.libmgtbackend.exception.UnauthorizedException;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.request.AddBookRequest;
@@ -21,6 +23,9 @@ public class BookService {
     private BookRepository bookRepository;
 
     @Autowired
+    private AuthenticationProvider authenticationProvider;
+
+    @Autowired
     private PagedResourcesAssembler<BookDto> pagedResourcesAssembler;
 
     public PagedModel<EntityModel<BookDto>> getAllBooks(Pageable paging) {
@@ -33,12 +38,16 @@ public class BookService {
         return new BookDto(book);
     }
 
-    public BookDto addBook(AddBookRequest request) {
+    public BookDto addBook(AddBookRequest request) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
+
         var book = new Book(request.title, request.author, request.isbn, request.publicationYear);
         return new BookDto(bookRepository.save(book));
     }
 
-    public BookDto updateBook(UpdateBookRequest request, Long id) {
+    public BookDto updateBook(UpdateBookRequest request, Long id) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
+
         var book = bookRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Book.class, id));
 
         if (request.title != null && !book.getTitle().equals(request.title)) {
@@ -57,7 +66,8 @@ public class BookService {
         return new BookDto(bookRepository.save(book));
     }
 
-    public void deleteBook(Long id) {
+    public void deleteBook(Long id) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
         bookRepository.deleteById(id);
     }
 }

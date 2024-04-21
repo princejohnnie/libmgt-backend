@@ -1,6 +1,7 @@
 package com.johnny.libmgtbackend.controller;
 
 import com.johnny.libmgtbackend.dtos.BookDto;
+import com.johnny.libmgtbackend.dtos.ErrorDto;
 import com.johnny.libmgtbackend.request.AddBookRequest;
 import com.johnny.libmgtbackend.request.UpdateBookRequest;
 import com.johnny.libmgtbackend.service.BookService;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,17 +35,32 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    BookDto store(@RequestBody @Valid AddBookRequest request) {
-        return bookService.addBook(request);
+    ResponseEntity<?> store(@RequestBody @Valid AddBookRequest request) {
+        try {
+            var bookDto = bookService.addBook(request);
+            return new ResponseEntity<>(bookDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @PutMapping("/books/{id}")
-    BookDto update(@RequestBody UpdateBookRequest request, @PathVariable Long id) {
-        return bookService.updateBook(request, id);
+    ResponseEntity<Object> update(@RequestBody UpdateBookRequest request, @PathVariable Long id) {
+        try {
+            var bookDto = bookService.updateBook(request, id);
+            return new ResponseEntity<>(bookDto, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @DeleteMapping("/books/{id}")
-    void delete(@PathVariable Long id) {
-        bookService.deleteBook(id);
+    ResponseEntity<Void> delete(@PathVariable Long id) {
+        try {
+            bookService.deleteBook(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }

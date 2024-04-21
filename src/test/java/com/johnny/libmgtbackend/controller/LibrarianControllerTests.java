@@ -1,6 +1,7 @@
 package com.johnny.libmgtbackend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.johnny.libmgtbackend.auth.AuthenticationProvider;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.models.BorrowRecord;
 import com.johnny.libmgtbackend.models.Librarian;
@@ -9,14 +10,16 @@ import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.repository.BorrowRepository;
 import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
-import com.johnny.libmgtbackend.request.CreateLibrarianRequest;
 import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -52,6 +55,12 @@ public class LibrarianControllerTests {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @MockBean
+    private AuthenticationProvider authenticationProvider;
+
+    @MockBean
+    private SecurityFilterChain securityFilterChain;
+
 
     @Test
     void  contextLoads() {
@@ -83,23 +92,9 @@ public class LibrarianControllerTests {
     }
 
     @Test
-    public void givenLibrarian_whenPostLibrarian_thenStoreLibrarian() throws Exception {
-        var request = new CreateLibrarianRequest("johnny@gmail.com", "John Uzodinma", "password");
-
-        var payload = objectMapper.writeValueAsString(request);
-
-        mockMvc.perform(
-                post("/api/librarians")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(payload)
-        ).andExpect(status().isOk());
-
-        Assertions.assertEquals(1, librarianRepository.count(), "Confirm that book was actually stored in the DB");
-    }
-
-    @Test
     public void givenLibrarian_whenPutLibrarian_thenUpdateLibrarian() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
         var request = new UpdateLibrarianRequest("johnny123@gmail.com", "John Prince", "password");
 
@@ -120,6 +115,7 @@ public class LibrarianControllerTests {
     @Test
     public void givenLibrarian_whenDeleteLibrarian_thenDeleteLibrarian() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
         Assertions.assertEquals(1, librarianRepository.count(), "Confirm that Librarian was saved to the DB");
 
@@ -132,10 +128,13 @@ public class LibrarianControllerTests {
 
     @Test
     public void givenBookAndPatron_whenPostBorrowBook_thenReturnBookRecord() throws Exception {
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
+
         var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
         var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
 
-        var borrowRecord = new BorrowRecord(book, patron);
+        var borrowRecord = new BorrowRecord(book, patron, librarian);
 
         mockMvc.perform(
                 post("/api/borrow/{bookId}/patron/{patronId}", book.getId(), patron.getId())
@@ -148,6 +147,9 @@ public class LibrarianControllerTests {
 
     @Test
     public void givenBookAndPatron_whenPutReturnBook_thenReturnBookRecord() throws Exception {
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
+
         var patron = patronRepository.save(new Patron("John Uzodinma", "+234809382832"));
         var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
 

@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "librarians", schema = "public")
 public class Librarian {
@@ -29,6 +30,10 @@ public class Librarian {
     public Librarian(String email, String name, String password) {
         this.email = email;
         this.name = name;
-        this.password = password;
+        this.setPassword(password);
+    }
+
+    public void setPassword(String plainTextPassword) {
+        this.password = BCrypt.hashpw(plainTextPassword.getBytes(), BCrypt.gensalt());
     }
 }

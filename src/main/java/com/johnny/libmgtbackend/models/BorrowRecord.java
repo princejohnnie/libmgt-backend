@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -33,8 +31,13 @@ public class BorrowRecord {
     @JoinColumn(name = "patron_id")
     private Patron patron;
 
-    public BorrowRecord(Book book, Patron patron) {
+    @ManyToOne
+    @JoinColumn(name = "librarian_id")
+    private Librarian librarian;
+
+    public BorrowRecord(Book book, Patron patron, Librarian librarian) {
         this.book = book;
         this.patron = patron;
+        this.librarian = librarian;
     }
 }

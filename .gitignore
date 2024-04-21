@@ -34,3 +34,4 @@ build/
 
 .env
 mvnw.cmd
+src/main/resources/static/logfile.txt

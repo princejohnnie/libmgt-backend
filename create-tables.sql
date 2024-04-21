@@ -29,10 +29,11 @@ CREATE TABLE librarians (
 
 CREATE TABLE borrow_records (
     id serial not null primary key,
+    borrow_date date null default current_date,
+    return_date date null default null,
     book_id integer not null references books (id),
     patron_id integer not null references patrons (id),
-    borrow_date date null default current_date,
-    return_date date null default null
+    librarian_id integer not null references librarians (id)
 );
 
 COMMIT;

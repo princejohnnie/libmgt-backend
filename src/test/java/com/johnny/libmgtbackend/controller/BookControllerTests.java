@@ -1,16 +1,22 @@
 package com.johnny.libmgtbackend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.johnny.libmgtbackend.auth.AuthenticationProvider;
 import com.johnny.libmgtbackend.models.Book;
+import com.johnny.libmgtbackend.models.Librarian;
 import com.johnny.libmgtbackend.repository.BookRepository;
+import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.request.AddBookRequest;
 import com.johnny.libmgtbackend.request.UpdateBookRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -34,7 +40,16 @@ public class BookControllerTests {
     private BookRepository bookRepository;
 
     @Autowired
+    private LibrarianRepository librarianRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
+
+    @MockBean
+    private AuthenticationProvider authenticationProvider;
+
+    @MockBean
+    private SecurityFilterChain securityFilterChain;
 
 
     @Test
@@ -71,8 +86,10 @@ public class BookControllerTests {
 
     @Test
     public void givenBook_whenPostBook_thenStoreBook() throws Exception {
-        var request = new AddBookRequest("Purple Hibiscus", "Chimamanda Adichie", "1288-2828-2228", "2016");
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var request = new AddBookRequest("Purple Hibiscus", "Chimamanda Adichie", "1288-2828-2228", "2016");
         var payload = objectMapper.writeValueAsString(request);
 
         mockMvc.perform(
@@ -86,8 +103,10 @@ public class BookControllerTests {
 
     @Test
     public void givenBook_whenPutBook_thenUpdateBook() throws Exception {
-        var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
         var updateBook = new UpdateBookRequest("Game of Thrones updated", "John Walker", "1233-3423-4545", "2018");
 
         var updatePayload = objectMapper.writeValueAsString(updateBook);
@@ -105,8 +124,10 @@ public class BookControllerTests {
 
     @Test
     public void givenBook_whenDeleteBook_thenDeleteBook() throws Exception {
-        var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
+        var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
+        Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
 
+        var book = bookRepository.save(new Book("Game of Thrones", "John Wick", "1288-2828-2228", "2016"));
         Assertions.assertEquals(1, bookRepository.count(), "Confirm that book was saved to the DB");
 
         mockMvc.perform(

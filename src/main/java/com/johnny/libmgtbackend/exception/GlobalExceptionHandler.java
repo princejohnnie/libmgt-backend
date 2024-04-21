@@ -7,6 +7,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,15 +22,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleException(Throwable throwable, HttpServletRequest request) {
 
         if (throwable instanceof ModelNotFoundException) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDto(throwable.getClass().getSimpleName(), throwable.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorDto(throwable.getMessage()));
         }
 
         if (throwable instanceof DataIntegrityViolationException) {
-            return ResponseEntity.unprocessableEntity().body(new ErrorDto(throwable.getClass().getSimpleName(), throwable.getMessage()));
+            return ResponseEntity.unprocessableEntity().body(new ErrorDto(throwable.getMessage()));
+        }
+
+        if (throwable instanceof AccessDeniedException) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ErrorDto("Authentication failed"));
         }
 
         if (throwable instanceof MethodArgumentNotValidException) {
-            var errorDto = new ErrorDto(throwable.getClass().getSimpleName(), "Invalid field value");
+            var errorDto = new ErrorDto("Invalid field value");
 
             errorDto.fieldErrors = ((MethodArgumentNotValidException) throwable).getFieldErrors().stream().collect(Collectors.toMap(
                     FieldError::getField,
@@ -40,7 +45,7 @@ public class GlobalExceptionHandler {
         }
 
         if (throwable instanceof ConstraintViolationException) {
-            var errorDto = new ErrorDto(throwable.getClass().getSimpleName(), "Constraint violated");
+            var errorDto = new ErrorDto("Constraint violated");
 
             errorDto.fieldErrors = ((ConstraintViolationException) throwable).getConstraintViolations().stream().collect(Collectors.toMap(
                     item -> item.getPropertyPath().toString(),
@@ -50,6 +55,6 @@ public class GlobalExceptionHandler {
             return ResponseEntity.unprocessableEntity().body(errorDto);
         }
 
-        return ResponseEntity.internalServerError().body(new ErrorDto(throwable.getClass().getSimpleName(), "Unhandled Exception: " + throwable.getMessage()));
+        return ResponseEntity.internalServerError().body(new ErrorDto( "Unhandled Exception: " + throwable.getMessage()));
     }
 }

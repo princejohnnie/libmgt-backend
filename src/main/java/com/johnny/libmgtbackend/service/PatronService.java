@@ -1,5 +1,6 @@
 package com.johnny.libmgtbackend.service;
 
+import com.johnny.libmgtbackend.auth.AuthenticationProvider;
 import com.johnny.libmgtbackend.dtos.PatronDto;
 import com.johnny.libmgtbackend.exception.ModelNotFoundException;
 import com.johnny.libmgtbackend.models.Patron;
@@ -20,6 +21,9 @@ public class PatronService {
     private PatronRepository patronRepository;
 
     @Autowired
+    private AuthenticationProvider authenticationProvider;
+
+    @Autowired
     private PagedResourcesAssembler<PatronDto> pagedResourcesAssembler;
 
 
@@ -33,12 +37,15 @@ public class PatronService {
         return new PatronDto(patronRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Patron.class, id)));
     }
 
-    public PatronDto createPatron(CreatePatronRequest request) {
+    public PatronDto createPatron(CreatePatronRequest request) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
         var patron = new Patron(request.name, request.contact);
         return new PatronDto(patronRepository.save(patron));
     }
 
-    public PatronDto updatePatron(UpdatePatronRequest request, Long id) {
+    public PatronDto updatePatron(UpdatePatronRequest request, Long id) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
+
         var patron = patronRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Patron.class, id));
 
         if (request.name != null && !patron.getName().equals(request.name)) {
@@ -51,7 +58,8 @@ public class PatronService {
         return new PatronDto(patronRepository.save(patron));
     }
 
-    public void deletePatron(Long id) {
+    public void deletePatron(Long id) throws Exception {
+        var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
         patronRepository.deleteById(id);
     }
 }

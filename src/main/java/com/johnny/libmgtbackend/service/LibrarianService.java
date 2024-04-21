@@ -15,6 +15,7 @@ import com.johnny.libmgtbackend.repository.LibrarianRepository;
 import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.request.UpdateLibrarianRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -43,12 +44,14 @@ public class LibrarianService {
     @Autowired
     private PagedResourcesAssembler<LibrarianDto> pagedResourcesAssembler;
 
+    @Cacheable(cacheManager = "librarianCacheManager", value = "librarians")
     public PagedModel<EntityModel<LibrarianDto>> getAllLibrarians(Pageable paging) {
         Page<Librarian> result = librarianRepository.findAll(paging);
 
         return pagedResourcesAssembler.toModel(result.map(LibrarianDto::new));
     }
 
+    @Cacheable(cacheManager = "librarianCacheManager", value = "librarians", key = "#id")
     public LibrarianDto getLibrarian(Long id) {
         return new LibrarianDto(librarianRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Librarian.class, id)));
     }

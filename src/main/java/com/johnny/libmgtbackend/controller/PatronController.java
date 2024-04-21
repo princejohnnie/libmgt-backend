@@ -23,14 +23,14 @@ public class PatronController {
     private PatronService patronService;
 
     @GetMapping("/patrons")
-    PagedModel<EntityModel<PatronDto>> index(
+    ResponseEntity<PagedModel<EntityModel<PatronDto>>> index(
             @PageableDefault(page = 0, size = Integer.MAX_VALUE, sort = {"name"}) Pageable paging) {
-        return patronService.getAllPatrons(paging);
+        return new ResponseEntity<>(patronService.getAllPatrons(paging), HttpStatus.OK);
     }
 
     @GetMapping("/patrons/{id}")
-    PatronDto show(@PathVariable Long id) {
-        return patronService.getPatron(id);
+    ResponseEntity<PatronDto> show(@PathVariable Long id) {
+        return new ResponseEntity<>(patronService.getPatron(id), HttpStatus.OK);
     }
 
     @PostMapping("/patrons")

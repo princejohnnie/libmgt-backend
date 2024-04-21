@@ -8,6 +8,7 @@ import com.johnny.libmgtbackend.repository.PatronRepository;
 import com.johnny.libmgtbackend.request.CreatePatronRequest;
 import com.johnny.libmgtbackend.request.UpdatePatronRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -28,12 +29,14 @@ public class PatronService {
     private PagedResourcesAssembler<PatronDto> pagedResourcesAssembler;
 
 
+    @Cacheable(cacheManager = "patronCacheManager", value = "patrons")
     public PagedModel<EntityModel<PatronDto>> getAllPatrons(Pageable paging) {
         Page<Patron> result = patronRepository.findAll(paging);
 
         return pagedResourcesAssembler.toModel(result.map(PatronDto::new));
     }
 
+    @Cacheable(cacheManager = "patronCacheManager", value = "patrons", key = "#id")
     public PatronDto getPatron(Long id) {
         return new PatronDto(patronRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Patron.class, id)));
     }

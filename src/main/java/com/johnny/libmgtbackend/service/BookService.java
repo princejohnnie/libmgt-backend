@@ -8,6 +8,7 @@ import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.request.AddBookRequest;
 import com.johnny.libmgtbackend.request.UpdateBookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -28,11 +29,13 @@ public class BookService {
     @Autowired
     private PagedResourcesAssembler<BookDto> pagedResourcesAssembler;
 
+    @Cacheable(cacheManager = "booksCacheManager", value = "books")
     public PagedModel<EntityModel<BookDto>> getAllBooks(Pageable paging) {
         Page<Book> result = bookRepository.findAll(paging);
         return pagedResourcesAssembler.toModel(result.map(BookDto::new));
     }
 
+    @Cacheable(cacheManager = "booksCacheManager", value = "books", key = "#id")
     public BookDto getBook(Long id) {
         var book = bookRepository.findById(id).orElseThrow(() -> new ModelNotFoundException(Book.class, id));
         return new BookDto(book);

@@ -23,15 +23,15 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/books")
-    PagedModel<EntityModel<BookDto>> index(
+    ResponseEntity<PagedModel<EntityModel<BookDto>>> index(
             @PageableDefault(page = 0, size = Integer.MAX_VALUE, sort = {"publicationYear"}) Pageable paging) {
 
-        return bookService.getAllBooks(paging);
+        return new ResponseEntity<>(bookService.getAllBooks(paging), HttpStatus.OK);
     }
 
     @GetMapping("/books/{id}")
-    BookDto show(@PathVariable Long id) {
-        return bookService.getBook(id);
+    ResponseEntity<BookDto> show(@PathVariable Long id) {
+        return new ResponseEntity<>(bookService.getBook(id), HttpStatus.OK);
     }
 
     @PostMapping("/books")

@@ -22,15 +22,15 @@ public class LibrarianController {
     private LibrarianService librarianService;
 
     @GetMapping("/librarians")
-    PagedModel<EntityModel<LibrarianDto>> index(
+    ResponseEntity<PagedModel<EntityModel<LibrarianDto>>> index(
             @PageableDefault(page = 0, size = Integer.MAX_VALUE, sort = {"email"}) Pageable paging) {
 
-        return librarianService.getAllLibrarians(paging);
+        return new ResponseEntity<>(librarianService.getAllLibrarians(paging), HttpStatus.OK);
     }
 
     @GetMapping("/librarians/{id}")
-    LibrarianDto show(@PathVariable Long id) {
-        return librarianService.getLibrarian(id);
+    ResponseEntity<LibrarianDto> show(@PathVariable Long id) {
+        return new ResponseEntity<>(librarianService.getLibrarian(id), HttpStatus.OK);
     }
 
     @PutMapping("/librarians/{id}")

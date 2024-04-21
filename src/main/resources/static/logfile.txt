@@ -1,0 +1,369 @@
+2024-04-21T18:54:58.922+01:00  INFO 37124 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 37124 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T18:54:58.926+01:00  INFO 37124 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T18:55:00.590+01:00  INFO 37124 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T18:55:00.698+01:00  INFO 37124 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 4 JPA repository interfaces.
+2024-04-21T18:55:01.793+01:00  INFO 37124 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T18:55:01.809+01:00  INFO 37124 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T18:55:01.809+01:00  INFO 37124 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T18:55:01.894+01:00  INFO 37124 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T18:55:01.894+01:00  INFO 37124 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2864 ms
+2024-04-21T18:55:02.210+01:00  INFO 37124 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T18:55:02.647+01:00  INFO 37124 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4fea840f
+2024-04-21T18:55:02.649+01:00  INFO 37124 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T18:55:02.701+01:00  INFO 37124 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T18:55:02.775+01:00  INFO 37124 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T18:55:02.822+01:00  INFO 37124 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T18:55:03.202+01:00  INFO 37124 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T18:55:03.304+01:00  WARN 37124 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T18:55:04.738+01:00  INFO 37124 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T18:55:04.745+01:00  INFO 37124 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T18:55:06.202+01:00  WARN 37124 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T18:55:06.433+01:00  WARN 37124 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e1da5e99-1cfb-4681-85d7-dd1f0867fcc2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T18:55:07.001+01:00  INFO 37124 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5ac8916d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7375ebe7, org.springframework.security.web.context.SecurityContextHolderFilter@14060410, org.springframework.security.web.header.HeaderWriterFilter@63be4548, org.springframework.web.filter.CorsFilter@16a7af5d, org.springframework.security.web.authentication.logout.LogoutFilter@6b6c882c, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@207358ad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@620260ad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@216c6825, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e2ee637, org.springframework.security.web.access.ExceptionTranslationFilter@6ae55678, org.springframework.security.web.access.intercept.AuthorizationFilter@101eb529]
+2024-04-21T18:55:07.944+01:00  INFO 37124 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T18:55:07.957+01:00  INFO 37124 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 9.975 seconds (process running for 11.097)
+2024-04-21T18:55:23.117+01:00  INFO 37124 --- [libmgt-backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T18:55:23.119+01:00  INFO 37124 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T18:55:23.124+01:00  INFO 37124 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-04-21T18:58:35.617+01:00  INFO 37124 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T18:58:35.620+01:00  INFO 37124 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T18:58:35.626+01:00  INFO 37124 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T18:58:45.178+01:00  INFO 48224 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 48224 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T18:58:45.183+01:00  INFO 48224 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T18:58:46.585+01:00  INFO 48224 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T18:58:46.669+01:00  INFO 48224 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 4 JPA repository interfaces.
+2024-04-21T18:58:47.531+01:00  INFO 48224 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T18:58:47.544+01:00  INFO 48224 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T18:58:47.544+01:00  INFO 48224 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T18:58:47.601+01:00  INFO 48224 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T18:58:47.602+01:00  INFO 48224 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2315 ms
+2024-04-21T18:58:47.826+01:00  INFO 48224 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T18:58:48.098+01:00  INFO 48224 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@353c6da1
+2024-04-21T18:58:48.100+01:00  INFO 48224 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T18:58:48.150+01:00  INFO 48224 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T18:58:48.218+01:00  INFO 48224 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T18:58:48.261+01:00  INFO 48224 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T18:58:48.575+01:00  INFO 48224 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T18:58:48.645+01:00  WARN 48224 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T18:58:49.854+01:00  INFO 48224 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T18:58:49.859+01:00  INFO 48224 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T18:58:51.083+01:00  WARN 48224 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T18:58:51.277+01:00  WARN 48224 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d15f57e5-0ece-49ee-8b6f-5188ed64b0cb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T18:58:51.705+01:00  INFO 48224 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@70736b19, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@183e64a8, org.springframework.security.web.context.SecurityContextHolderFilter@31f4fdc5, org.springframework.security.web.header.HeaderWriterFilter@68a7bc12, org.springframework.web.filter.CorsFilter@7a553110, org.springframework.security.web.authentication.logout.LogoutFilter@40874f54, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@4b8466c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1dcf5f38, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64ba5a71, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2044f708, org.springframework.security.web.access.ExceptionTranslationFilter@11df0bc7, org.springframework.security.web.access.intercept.AuthorizationFilter@50f65fe0]
+2024-04-21T18:58:52.223+01:00  INFO 48224 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T18:58:52.237+01:00  INFO 48224 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 7.939 seconds (process running for 9.026)
+2024-04-21T18:59:07.017+01:00  INFO 48224 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T18:59:07.018+01:00  INFO 48224 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T18:59:07.020+01:00  INFO 48224 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-04-21T18:59:47.050+01:00  INFO 48224 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T18:59:47.056+01:00  INFO 48224 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T18:59:47.060+01:00  INFO 48224 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T18:59:58.479+01:00  INFO 17152 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 17152 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T18:59:58.489+01:00  INFO 17152 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:00:00.172+01:00  INFO 17152 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:00:00.373+01:00  INFO 17152 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 170 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:00:01.698+01:00  INFO 17152 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:00:01.717+01:00  INFO 17152 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:00:01.717+01:00  INFO 17152 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:00:01.806+01:00  INFO 17152 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:00:01.806+01:00  INFO 17152 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3227 ms
+2024-04-21T19:00:02.073+01:00  INFO 17152 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:00:02.361+01:00  INFO 17152 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43c7fe8a
+2024-04-21T19:00:02.365+01:00  INFO 17152 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:00:02.437+01:00  INFO 17152 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:00:02.549+01:00  INFO 17152 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:00:02.615+01:00  INFO 17152 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:00:03.081+01:00  INFO 17152 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:00:03.183+01:00  WARN 17152 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:00:05.016+01:00  INFO 17152 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:00:05.026+01:00  INFO 17152 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:00:07.189+01:00  WARN 17152 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:00:07.522+01:00  WARN 17152 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 925531ae-eaa4-45cb-b746-21d135c9b3ed
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:00:08.153+01:00  INFO 17152 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@59f56892, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@389fad5b, org.springframework.security.web.context.SecurityContextHolderFilter@5edd2170, org.springframework.security.web.header.HeaderWriterFilter@eea69a9, org.springframework.web.filter.CorsFilter@5d72da0b, org.springframework.security.web.authentication.logout.LogoutFilter@a904e64, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@285b63eb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32db94fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b61a4b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a983f8a, org.springframework.security.web.access.ExceptionTranslationFilter@5aff8207, org.springframework.security.web.access.intercept.AuthorizationFilter@c8d20bb]
+2024-04-21T19:00:09.159+01:00  INFO 17152 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:00:09.174+01:00  INFO 17152 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 11.601 seconds (process running for 12.922)
+2024-04-21T19:00:34.475+01:00  INFO 17152 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:00:34.476+01:00  INFO 17152 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:00:34.478+01:00  INFO 17152 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-04-21T19:00:34.817+01:00  INFO 17152 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : Start >> register() - [com.johnny.libmgtbackend.request.RegisterRequest@72733aa5]
+2024-04-21T19:00:35.607+01:00  INFO 17152 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : End << register() - <200 OK OK,eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MTM3MjI0MzUsImV4cCI6MTcxMzgwODgzNSwic3ViIjoiNCJ9.ugnQPM-MaNxxi7KfZkgJNexgMKZhAHL9nDnU36RTWszC8taLdi8fjR8T4G-96fCQrBQypIxzMrfgXu8-K56X1g,[]>
+2024-04-21T19:04:59.229+01:00  INFO 17152 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:04:59.234+01:00  INFO 17152 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:04:59.240+01:00  INFO 17152 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:05:07.506+01:00  INFO 34988 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 34988 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:05:07.511+01:00  INFO 34988 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:05:09.118+01:00  INFO 34988 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:05:09.212+01:00  INFO 34988 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:05:10.476+01:00  INFO 34988 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:05:10.494+01:00  INFO 34988 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:05:10.495+01:00  INFO 34988 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:05:10.603+01:00  INFO 34988 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:05:10.604+01:00  INFO 34988 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2962 ms
+2024-04-21T19:05:10.965+01:00  INFO 34988 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:05:11.283+01:00  INFO 34988 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5ec9eefa
+2024-04-21T19:05:11.287+01:00  INFO 34988 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:05:11.358+01:00  INFO 34988 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:05:11.457+01:00  INFO 34988 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:05:11.514+01:00  INFO 34988 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:05:11.918+01:00  INFO 34988 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:05:12.127+01:00  WARN 34988 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:05:14.173+01:00  INFO 34988 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:05:14.177+01:00  INFO 34988 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:05:15.466+01:00  WARN 34988 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:05:15.769+01:00  WARN 34988 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a58ebdd2-275e-42da-8f45-23d19979f3b3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:05:16.472+01:00  INFO 34988 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ebcfcf1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@8e100e7, org.springframework.security.web.context.SecurityContextHolderFilter@12921ee1, org.springframework.security.web.header.HeaderWriterFilter@189f9f9f, org.springframework.web.filter.CorsFilter@420dde28, org.springframework.security.web.authentication.logout.LogoutFilter@312e8eaf, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@6d3a56ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29390110, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b89515b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@141874c8, org.springframework.security.web.access.ExceptionTranslationFilter@a6924ad, org.springframework.security.web.access.intercept.AuthorizationFilter@33ef393a]
+2024-04-21T19:05:17.092+01:00  INFO 34988 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:05:17.105+01:00  INFO 34988 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 10.491 seconds (process running for 11.913)
+2024-04-21T19:05:27.161+01:00  INFO 34988 --- [libmgt-backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:05:27.161+01:00  INFO 34988 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:05:27.164+01:00  INFO 34988 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-21T19:05:27.550+01:00  INFO 34988 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : Start >> register() called - [com.johnny.libmgtbackend.request.RegisterRequest@1bfbd8fb]
+2024-04-21T19:05:28.314+01:00  INFO 34988 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : End << register() returned - ResponseEntity
+2024-04-21T19:09:58.010+01:00  INFO 34988 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:09:58.017+01:00  INFO 34988 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:09:58.024+01:00  INFO 34988 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:10:06.249+01:00  INFO 35092 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 35092 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:10:06.253+01:00  INFO 35092 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:10:07.520+01:00  INFO 35092 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:10:07.591+01:00  INFO 35092 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:10:08.474+01:00  INFO 35092 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:10:08.485+01:00  INFO 35092 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:10:08.485+01:00  INFO 35092 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:10:08.558+01:00  INFO 35092 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:10:08.559+01:00  INFO 35092 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2223 ms
+2024-04-21T19:10:08.813+01:00  INFO 35092 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:10:09.003+01:00  INFO 35092 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@10d18696
+2024-04-21T19:10:09.007+01:00  INFO 35092 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:10:09.065+01:00  INFO 35092 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:10:09.152+01:00  INFO 35092 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:10:09.201+01:00  INFO 35092 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:10:09.556+01:00  INFO 35092 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:10:09.652+01:00  WARN 35092 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:10:11.000+01:00  INFO 35092 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:10:11.003+01:00  INFO 35092 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:10:12.463+01:00  WARN 35092 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:10:12.541+01:00  WARN 35092 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ef3fe885-b3d7-4e5a-849c-8cbbab2a11d8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:10:13.097+01:00  INFO 35092 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5f63a6f2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a577564, org.springframework.security.web.context.SecurityContextHolderFilter@7f72855d, org.springframework.security.web.header.HeaderWriterFilter@5c960f64, org.springframework.web.filter.CorsFilter@67915454, org.springframework.security.web.authentication.logout.LogoutFilter@11df0bc7, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@18876fa9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f119b55, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64dcfd09, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a110e7d, org.springframework.security.web.access.ExceptionTranslationFilter@7f219e84, org.springframework.security.web.access.intercept.AuthorizationFilter@35b70f9d]
+2024-04-21T19:10:13.781+01:00  INFO 35092 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:10:13.794+01:00  INFO 35092 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 8.283 seconds (process running for 9.283)
+2024-04-21T19:10:23.474+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:10:23.474+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:10:23.478+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-21T19:10:23.902+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : Start >> register() called with payload - [{"email":"johnny5@gmail.com","name":"John Uzo","password":"password"}]
+2024-04-21T19:10:24.658+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : End << register() returned with status - 200 OK
+2024-04-21T19:11:54.936+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-5] c.j.libmgtbackend.logging.LoggingAspect  : Start >> register() called with payload - [{"email":"johnny5@gmail.com","name":"John Uzo","password":"password"}]
+2024-04-21T19:11:55.041+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-5] c.j.libmgtbackend.logging.LoggingAspect  : End << register() returned with status - 409 CONFLICT
+2024-04-21T19:14:46.554+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-10] c.j.libmgtbackend.logging.LoggingAspect  : Start >> login() called with payload - [{"email":"johnny5@gmail.com","password":"password"}]
+2024-04-21T19:14:46.730+01:00  INFO 35092 --- [libmgt-backend] [http-nio-8080-exec-10] c.j.libmgtbackend.logging.LoggingAspect  : End << login() returned with status - 200 OK
+2024-04-21T19:15:51.476+01:00  INFO 35092 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:15:51.481+01:00  INFO 35092 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:15:51.483+01:00  INFO 35092 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:15:59.864+01:00  INFO 49372 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 49372 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:15:59.867+01:00  INFO 49372 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:16:01.454+01:00  INFO 49372 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:16:01.573+01:00  INFO 49372 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:16:03.008+01:00  INFO 49372 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:16:03.026+01:00  INFO 49372 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:16:03.027+01:00  INFO 49372 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:16:03.138+01:00  INFO 49372 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:16:03.139+01:00  INFO 49372 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3175 ms
+2024-04-21T19:16:03.522+01:00  INFO 49372 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:16:03.787+01:00  INFO 49372 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43c7fe8a
+2024-04-21T19:16:03.789+01:00  INFO 49372 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:16:03.844+01:00  INFO 49372 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:16:03.922+01:00  INFO 49372 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:16:03.971+01:00  INFO 49372 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:16:04.350+01:00  INFO 49372 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:16:04.536+01:00  WARN 49372 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:16:05.942+01:00  INFO 49372 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:16:05.946+01:00  INFO 49372 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:16:07.362+01:00  WARN 49372 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:16:07.459+01:00  WARN 49372 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 71d6b511-a86b-4f45-aaa4-3a769613503f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:16:08.000+01:00  INFO 49372 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d72da0b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@285b63eb, org.springframework.security.web.context.SecurityContextHolderFilter@32db94fb, org.springframework.security.web.header.HeaderWriterFilter@1609ed55, org.springframework.web.filter.CorsFilter@5a983f8a, org.springframework.security.web.authentication.logout.LogoutFilter@2f1b8770, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@1fa8a4f7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c00de0d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6278371a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@54c1878b, org.springframework.security.web.access.ExceptionTranslationFilter@278df226, org.springframework.security.web.access.intercept.AuthorizationFilter@59f56892]
+2024-04-21T19:16:08.591+01:00  INFO 49372 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:16:08.602+01:00  INFO 49372 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 9.619 seconds (process running for 10.755)
+2024-04-21T19:16:19.224+01:00  INFO 49372 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:16:19.225+01:00  INFO 49372 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:16:19.227+01:00  INFO 49372 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-04-21T19:16:46.971+01:00  INFO 49372 --- [libmgt-backend] [http-nio-8080-exec-3] c.j.libmgtbackend.logging.LoggingAspect  : Start >> login() called with payload - [{"email":"johnny5@gmail.com","password":"password"}]
+2024-04-21T19:16:47.482+01:00  INFO 49372 --- [libmgt-backend] [http-nio-8080-exec-3] c.j.libmgtbackend.logging.LoggingAspect  : End << login() returned with status - 200 OK
+2024-04-21T19:20:10.214+01:00  INFO 49372 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:20:10.220+01:00  INFO 49372 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:20:10.227+01:00  INFO 49372 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:20:24.434+01:00  INFO 45920 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 45920 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:20:24.437+01:00  INFO 45920 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:20:26.019+01:00  INFO 45920 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:20:26.148+01:00  INFO 45920 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 116 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:20:27.412+01:00  INFO 45920 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:20:27.447+01:00  INFO 45920 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:20:27.447+01:00  INFO 45920 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:20:27.536+01:00  INFO 45920 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:20:27.536+01:00  INFO 45920 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2990 ms
+2024-04-21T19:20:27.808+01:00  INFO 45920 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:20:28.017+01:00  INFO 45920 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1785d194
+2024-04-21T19:20:28.019+01:00  INFO 45920 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:20:28.073+01:00  INFO 45920 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:20:28.174+01:00  INFO 45920 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:20:28.230+01:00  INFO 45920 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:20:28.602+01:00  INFO 45920 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:20:28.724+01:00  WARN 45920 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:20:30.253+01:00  INFO 45920 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:20:30.260+01:00  INFO 45920 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:20:31.643+01:00  WARN 45920 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:20:31.744+01:00  WARN 45920 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a347eb05-28ae-45ab-878e-45d8cb271c98
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:20:32.396+01:00  INFO 45920 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@66c88fce, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ccfce5a, org.springframework.security.web.context.SecurityContextHolderFilter@6eeb15f9, org.springframework.security.web.header.HeaderWriterFilter@179f30b7, org.springframework.web.filter.CorsFilter@68a7bc12, org.springframework.security.web.authentication.logout.LogoutFilter@36def543, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@14f03f2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@568cbf8d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@376c5950, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@235b4aea, org.springframework.security.web.access.ExceptionTranslationFilter@2bab1821, org.springframework.security.web.access.intercept.AuthorizationFilter@147203c2]
+2024-04-21T19:20:33.155+01:00  INFO 45920 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:20:33.169+01:00  INFO 45920 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 10.124 seconds (process running for 12.549)
+2024-04-21T19:20:41.555+01:00  INFO 45920 --- [libmgt-backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:20:41.555+01:00  INFO 45920 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:20:41.556+01:00  INFO 45920 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-21T19:20:41.897+01:00  INFO 45920 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : Start >> login() called with payload - [{"email":"johnny5@gmail.com","password":"password"}]
+2024-04-21T19:20:42.453+01:00  INFO 45920 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : End << login() returned with status - 200 OK
+2024-04-21T19:31:59.569+01:00  INFO 45920 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:31:59.572+01:00  INFO 45920 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:31:59.574+01:00  INFO 45920 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:32:09.609+01:00  INFO 7568 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 7568 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:32:09.614+01:00  INFO 7568 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:32:11.262+01:00  INFO 7568 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:32:11.352+01:00  INFO 7568 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:32:12.430+01:00  INFO 7568 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:32:12.444+01:00  INFO 7568 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:32:12.445+01:00  INFO 7568 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:32:12.527+01:00  INFO 7568 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:32:12.528+01:00  INFO 7568 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2807 ms
+2024-04-21T19:32:12.824+01:00  INFO 7568 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:32:13.136+01:00  INFO 7568 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@76563ae7
+2024-04-21T19:32:13.140+01:00  INFO 7568 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:32:13.190+01:00  INFO 7568 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:32:13.271+01:00  INFO 7568 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:32:13.311+01:00  INFO 7568 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:32:13.623+01:00  INFO 7568 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:32:13.697+01:00  WARN 7568 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:32:15.330+01:00  INFO 7568 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:32:15.333+01:00  INFO 7568 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:32:16.713+01:00  WARN 7568 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:32:16.829+01:00  WARN 7568 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6330d463-fdde-4f97-82e7-8ad6bd721670
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:32:17.495+01:00  INFO 7568 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e895acb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d1d05ff, org.springframework.security.web.context.SecurityContextHolderFilter@665e18d5, org.springframework.security.web.header.HeaderWriterFilter@30623109, org.springframework.web.filter.CorsFilter@5889e697, org.springframework.security.web.authentication.logout.LogoutFilter@789d45f7, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@2c3d1214, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c8859b4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56897de0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48064a5a, org.springframework.security.web.access.ExceptionTranslationFilter@6278371a, org.springframework.security.web.access.intercept.AuthorizationFilter@665c79a2]
+2024-04-21T19:32:18.327+01:00  INFO 7568 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:32:18.340+01:00  INFO 7568 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 9.675 seconds (process running for 11.034)
+2024-04-21T19:33:16.672+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:33:16.674+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:33:16.678+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-04-21T19:33:17.013+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : Start >> login() called with payload - [{"email":"johnny5@gmail.com","password":"password"}]
+2024-04-21T19:33:17.579+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-1] c.j.libmgtbackend.logging.LoggingAspect  : End << login() returned with status - 200 OK
+2024-04-21T19:33:49.396+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-4] c.j.libmgtbackend.logging.LoggingAspect  : Start >> store() called with payload - [{"title":"Things fall","author":"Chinua Achebe","isbn":"8900-2920-2729-2828","publicationYear":"2016"}]
+2024-04-21T19:33:49.612+01:00  INFO 7568 --- [libmgt-backend] [http-nio-8080-exec-4] c.j.libmgtbackend.logging.LoggingAspect  : End << store() returned with status - 200 OK
+2024-04-21T19:35:16.455+01:00  INFO 7568 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:35:16.459+01:00  INFO 7568 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:35:16.463+01:00  INFO 7568 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:35:25.222+01:00  INFO 29436 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 29436 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:35:25.227+01:00  INFO 29436 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:35:26.670+01:00  INFO 29436 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:35:26.770+01:00  INFO 29436 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:35:27.729+01:00  INFO 29436 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:35:27.742+01:00  INFO 29436 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:35:27.743+01:00  INFO 29436 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:35:27.811+01:00  INFO 29436 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:35:27.812+01:00  INFO 29436 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2489 ms
+2024-04-21T19:35:28.076+01:00  INFO 29436 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:35:28.469+01:00  INFO 29436 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@353c6da1
+2024-04-21T19:35:28.471+01:00  INFO 29436 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:35:28.512+01:00  INFO 29436 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:35:28.573+01:00  INFO 29436 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:35:28.621+01:00  INFO 29436 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:35:28.965+01:00  INFO 29436 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:35:29.185+01:00  WARN 29436 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:35:30.486+01:00  INFO 29436 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:35:30.490+01:00  INFO 29436 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:35:31.911+01:00  WARN 29436 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:35:32.015+01:00  WARN 29436 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c3787d6e-e35e-45dd-a7b9-48f40b1b7627
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:35:32.521+01:00  INFO 29436 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@22db12f6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@68e6856c, org.springframework.security.web.context.SecurityContextHolderFilter@79392584, org.springframework.security.web.header.HeaderWriterFilter@66e27ac9, org.springframework.web.filter.CorsFilter@10acfe30, org.springframework.security.web.authentication.logout.LogoutFilter@4b8466c2, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@22bbbe6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1407b93f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5aff8207, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@789d45f7, org.springframework.security.web.access.ExceptionTranslationFilter@18876fa9, org.springframework.security.web.access.intercept.AuthorizationFilter@4f96e484]
+2024-04-21T19:35:33.297+01:00  INFO 29436 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:35:33.310+01:00  INFO 29436 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 9.293 seconds (process running for 10.859)
+2024-04-21T19:35:52.231+01:00  INFO 29436 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:35:52.232+01:00  INFO 29436 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:35:52.235+01:00  INFO 29436 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-21T19:35:52.678+01:00  INFO 29436 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : Start >> class com.johnny.libmgtbackend.controller.BookController store() called with payload - [{"title":"Things fall","author":"Chinua Achebe","isbn":"8900-2920-2729-2828","publicationYear":"2016"}]
+2024-04-21T19:35:52.873+01:00  INFO 29436 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : End << store() returned with status - 200 OK
+2024-04-21T19:37:01.020+01:00  INFO 29436 --- [libmgt-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:37:01.025+01:00  INFO 29436 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T19:37:01.037+01:00  INFO 29436 --- [libmgt-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T19:37:11.685+01:00  INFO 37116 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Starting LibmgtBackendApplication using Java 19.0.1 with PID 37116 (C:\Users\Johnny\source\repos\libmgt-backend\target\classes started by Johnny in C:\Users\Johnny\source\repos\libmgt-backend)
+2024-04-21T19:37:11.689+01:00  INFO 37116 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : The following 1 profile is active: "dev"
+2024-04-21T19:37:13.420+01:00  INFO 37116 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T19:37:13.513+01:00  INFO 37116 --- [libmgt-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 4 JPA repository interfaces.
+2024-04-21T19:37:14.827+01:00  INFO 37116 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T19:37:14.846+01:00  INFO 37116 --- [libmgt-backend] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T19:37:14.846+01:00  INFO 37116 --- [libmgt-backend] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-04-21T19:37:14.931+01:00  INFO 37116 --- [libmgt-backend] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T19:37:14.932+01:00  INFO 37116 --- [libmgt-backend] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3106 ms
+2024-04-21T19:37:15.271+01:00  INFO 37116 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T19:37:15.591+01:00  INFO 37116 --- [libmgt-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3487442d
+2024-04-21T19:37:15.593+01:00  INFO 37116 --- [libmgt-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T19:37:15.654+01:00  INFO 37116 --- [libmgt-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T19:37:15.755+01:00  INFO 37116 --- [libmgt-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-21T19:37:15.816+01:00  INFO 37116 --- [libmgt-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T19:37:16.158+01:00  INFO 37116 --- [libmgt-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T19:37:16.238+01:00  WARN 37116 --- [libmgt-backend] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T19:37:17.804+01:00  INFO 37116 --- [libmgt-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T19:37:17.808+01:00  INFO 37116 --- [libmgt-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T19:37:19.196+01:00  WARN 37116 --- [libmgt-backend] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T19:37:19.338+01:00  WARN 37116 --- [libmgt-backend] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 11420248-f5a1-446c-ad26-4d8da22d770d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-04-21T19:37:20.270+01:00  INFO 37116 --- [libmgt-backend] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@665c79a2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e79473d, org.springframework.security.web.context.SecurityContextHolderFilter@138110f8, org.springframework.security.web.header.HeaderWriterFilter@c6a1be2, org.springframework.web.filter.CorsFilter@2e895acb, org.springframework.security.web.authentication.logout.LogoutFilter@10acfe30, com.johnny.libmgtbackend.auth.CustomAuthenticationFilter@5d1d05ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@665e18d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4795876e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5889e697, org.springframework.security.web.access.ExceptionTranslationFilter@6b61a4b0, org.springframework.security.web.access.intercept.AuthorizationFilter@27f6e2c3]
+2024-04-21T19:37:21.161+01:00  INFO 37116 --- [libmgt-backend] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T19:37:21.175+01:00  INFO 37116 --- [libmgt-backend] [main] c.j.l.LibmgtBackendApplication           : Started LibmgtBackendApplication in 10.447 seconds (process running for 12.122)
+2024-04-21T19:37:33.249+01:00  INFO 37116 --- [libmgt-backend] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T19:37:33.251+01:00  INFO 37116 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T19:37:33.256+01:00  INFO 37116 --- [libmgt-backend] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-04-21T19:37:33.642+01:00  INFO 37116 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : Start >> BookController store() called with payload - [{"title":"Things fall","author":"Chinua Achebe","isbn":"8900-2920-2729-2828","publicationYear":"2016"}]
+2024-04-21T19:37:33.990+01:00  INFO 37116 --- [libmgt-backend] [http-nio-8080-exec-2] c.j.libmgtbackend.logging.LoggingAspect  : End << BookController store() returned with status - 200 OK

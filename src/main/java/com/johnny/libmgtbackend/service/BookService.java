@@ -3,7 +3,6 @@ package com.johnny.libmgtbackend.service;
 import com.johnny.libmgtbackend.auth.AuthenticationProvider;
 import com.johnny.libmgtbackend.dtos.BookDto;
 import com.johnny.libmgtbackend.exception.ModelNotFoundException;
-import com.johnny.libmgtbackend.exception.UnauthorizedException;
 import com.johnny.libmgtbackend.models.Book;
 import com.johnny.libmgtbackend.repository.BookRepository;
 import com.johnny.libmgtbackend.request.AddBookRequest;
@@ -15,6 +14,7 @@ import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BookService {
@@ -45,6 +45,7 @@ public class BookService {
         return new BookDto(bookRepository.save(book));
     }
 
+    @Transactional
     public BookDto updateBook(UpdateBookRequest request, Long id) throws Exception {
         var authLibrarian = authenticationProvider.getAuthenticatedLibrarian();
 

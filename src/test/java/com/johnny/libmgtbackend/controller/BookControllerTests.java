@@ -20,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -102,6 +103,7 @@ public class BookControllerTests {
     }
 
     @Test
+    @Transactional
     public void givenBook_whenPutBook_thenUpdateBook() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
         Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);

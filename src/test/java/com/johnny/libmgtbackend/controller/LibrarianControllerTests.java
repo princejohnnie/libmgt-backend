@@ -23,6 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -92,6 +93,7 @@ public class LibrarianControllerTests {
     }
 
     @Test
+    @Transactional
     public void givenLibrarian_whenPutLibrarian_thenUpdateLibrarian() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Uzodinma", "password"));
         Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
@@ -127,6 +129,7 @@ public class LibrarianControllerTests {
     }
 
     @Test
+    @Transactional
     public void givenBookAndPatron_whenPostBorrowBook_thenReturnBookRecord() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
         Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
@@ -146,6 +149,7 @@ public class LibrarianControllerTests {
     }
 
     @Test
+    @Transactional
     public void givenBookAndPatron_whenPutReturnBook_thenReturnBookRecord() throws Exception {
         var librarian = librarianRepository.save(new Librarian("johnny@gmail.com", "John Prince", "password"));
         Mockito.when(authenticationProvider.getAuthenticatedLibrarian()).thenReturn(librarian);
